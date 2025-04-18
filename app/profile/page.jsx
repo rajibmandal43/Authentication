@@ -12,12 +12,16 @@ import { useRouter } from "next/navigation";
 import Navbar from "../components/Navbar";
 const page = () => {
   const [user, setUser] = useState(null);
+  const [token,setToken]=useState('');
   const router = useRouter();
-
-  const storedUser = localStorage.getItem("user");
-
-
-  useEffect(() => {
+  // console.log("object");
+  // useEffect(()=>{
+    // setToken(storedUser);
+    // },[])
+    // console.log(storedUser);
+    
+    useEffect(() => {
+    const storedUser = localStorage.getItem("user");
     if (!storedUser) {
       router.push("/");
     } 
@@ -44,7 +48,7 @@ const page = () => {
         >
           <div className="text-center">
             <FaUser size={60} className="text-primary mb-3" />
-            <h2>User Profile</h2>
+            <h2>User Profile: {token}</h2>
           </div>
           <hr />
           <div className="px-3">
